@@ -1,4 +1,4 @@
-const CACHE_NAME = "relatorio-tecnico-v2";
+const CACHE_NAME = "rat-bit-v4";
 
 const FILES_TO_CACHE = [
   "./",
