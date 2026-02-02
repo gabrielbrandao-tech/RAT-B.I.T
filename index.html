@@ -1,345 +1,110 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Relatório Técnico</title>
-<meta name="theme-color" content="#0f172a">
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon-192.png">
 
-<style>
-:root{
-  --bg:#f4f6f8;
-  --card:#ffffff;
-  --text:#1f2937;
-  --input:#ffffff;
-  --border:#cbd5e1;
-  --primary:#1d3557;
-  --danger:#e63946;
-  --success:#2a9d8f;
-}
+    <meta charset="UTF-8">
+    <title>Relatório Técnico</title>
+    <meta name="theme-color" content="#0f172a">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
 
-body.dark{
-  --bg:#0f172a;
-  --card:#1e293b;
-  --text:#e5e7eb;
-  --input:#0f172a;
-  --border:#334155;
-  --primary:#60a5fa;
-  --danger:#f87171;
-  --success:#34d399;
-}
-
-body{
-  font-family:Arial;
-  background:var(--bg);
-  color:var(--text);
-  padding:20px;
-}
-
-.container{
-  max-width:900px;
-  margin:auto;
-  background:var(--card);
-  padding:25px;
-  border-radius:12px;
-}
-
-h2,h3,h4{text-align:center}
-
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.toggle{
-  background:var(--primary);
-  color:#fff;
-  padding:8px 12px;
-  border-radius:6px;
-  cursor:pointer;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:15px;
-}
-
-.buttons{
-  margin-top:15px;
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-button{
-  border:none;
-  padding:8px 14px;
-  border-radius:6px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.next{background:var(--primary);color:#fff}
-.back{background:var(--danger);color:#fff}
-.copy{background:var(--success);color:#fff}
-
-.box{
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:12px;
-  margin-top:10px;
-}
-
-.box label{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:6px;
-}
-
-.box small{
-  color:var(--danger);
-  cursor:pointer;
-}
-
-.lista{
-  margin-top:10px;
-  list-style:none;
-  padding:0;
-}
-
-.lista li{
-  display:flex;
-  justify-content:space-between;
-  padding:6px;
-  border-bottom:1px solid var(--border);
-}
-
-input[type="text"]{
-  width:100%;
-  padding:8px;
-  margin-top:6px;
-}
-</style>
 </head>
 
+<header>
+
+</header>
+
 <body class="dark">
+    <div>
+    <nav>
 
-<form class="container" onsubmit="event.preventDefault()">
+    <form class="container" onsubmit="event.preventDefault()">
 
-<div class="topbar">
-  <h2>Relatório Técnico</h2>
-  <div class="toggle" onclick="toggleTema()">🌙 / ☀️</div>
-</div>
+    <div class="topbar">
+      <h2>Relatório Técnico</h2>
+      <div class="toggle" onclick="toggleTema()">🌙 / ☀️</div>
+    </div>
 
-<!-- STEP 1 -->
-<section class="step" data-step="1">
-<h3>Identificação</h3>
-<div class="grid">
-  <div><label>Local *</label><input id="local"></div>
-  <div><label>WOT *</label><input id="wot"></div>
-  <div><label>Responsável *</label><input id="responsavel"></div>
-  <div><label>Função *</label><input id="funcao"></div>
-</div>
-<div class="buttons">
-  <button class="next" onclick="nextStep()">Próximo</button>
-</div>
-</section>
+    <!-- STEP 1 -->
+    <section class="step" data-step="1">
+    <h3>Identificação</h3>
+    <div class="grid">
+      <div><label>Local *</label><input id="local"></div>
+      <div><label>WOT *</label><input id="wot"></div>
+      <div><label>Responsável *</label><input id="responsavel"></div>
+      <div><label>Função *</label><input id="funcao"></div>
+    </div>
+    <div class="buttons">
+      <button class="next" onclick="nextStep()">Próximo</button>
+    </div>
+    </section>
 
-<!-- STEP 2 -->
-<section class="step" data-step="2" style="display:none;">
-<h3>Descrição Técnica</h3>
+    <!-- STEP 2 -->
+    <section class="step" data-step="2" style="display:none;">
+    <h3>Descrição Técnica</h3>
 
-<h4>Problemas</h4>
-<div id="boxProblemas" class="box"></div>
+    <h4>Problemas</h4>
+    <div id="boxProblemas" class="box"></div>
 
-<input id="novoProblema" placeholder="Adicionar novo problema">
-<button class="next" onclick="addCustom('problemas')">Adicionar problema</button>
+    <input id="novoProblema" placeholder="Adicionar novo problema">
+    <button class="next" onclick="addCustom('problemas')">Adicionar problema</button>
 
-<button class="next" onclick="addChecked('problemas')">Adicionar selecionados</button>
-<ul id="listaProblemas" class="lista"></ul>
+    <button class="next" onclick="addChecked('problemas')">Adicionar selecionados</button>
+    <ul id="listaProblemas" class="lista"></ul>
 
-<hr>
+    <hr>
 
-<h4>Soluções</h4>
-<div id="boxSolucoes" class="box"></div>
+    <h4>Soluções</h4>
+    <div id="boxSolucoes" class="box"></div>
 
-<input id="novaSolucao" placeholder="Adicionar nova solução">
-<button class="next" onclick="addCustom('solucoes')">Adicionar solução</button>
+    <input id="novaSolucao" placeholder="Adicionar nova solução">
+    <button class="next" onclick="addCustom('solucoes')">Adicionar solução</button>
 
-<button class="next" onclick="addChecked('solucoes')">Adicionar selecionadas</button>
-<ul id="listaSolucoes" class="lista"></ul>
+    <button class="next" onclick="addChecked('solucoes')">Adicionar selecionadas</button>
+    <ul id="listaSolucoes" class="lista"></ul>
 
-<div class="buttons">
-  <button class="back" onclick="prevStep()">Voltar</button>
-  <button class="next" onclick="validarStep2()">Próximo</button>
-</div>
-</section>
+    <div class="buttons">
+      <button class="back" onclick="prevStep()">Voltar</button>
+      <button class="next" onclick="validarStep2()">Próximo</button>
+    </div>
+    </section>
 
-<!-- STEP 3 -->
-<section class="step" data-step="3" style="display:none;">
-<h3>Finalização</h3>
+    <!-- STEP 3 -->
+    <section class="step" data-step="3" style="display:none;">
+    <h3>Finalização</h3>
 
-<label>Status *</label>
-<select id="status">
-  <option value="">Selecione</option>
-  <option>Produtivo</option>
-  <option>Improdutivo</option>
-</select>
+    <label>Status *</label>
+    <select id="status">
+      <option value="">Selecione</option>
+      <option>Produtivo</option>
+      <option>Improdutivo</option>
+    </select>
 
-<div class="buttons">
-  <button class="back" onclick="prevStep()">Voltar</button>
-  <button class="next" onclick="gerarRelatorio()">Gerar Relatório</button>
-</div>
+    <div class="buttons">
+      <button class="back" onclick="prevStep()">Voltar</button>
+      <button class="next" onclick="gerarRelatorio()">Gerar Relatório</button>
+    </div>
 
-<pre id="resultado"></pre>
+    <pre id="resultado"></pre>
 
-<div class="buttons">
-  <button class="copy" onclick="copiar()">Copiar</button>
-</div>
-</section>
+    <div class="buttons">
+      <button class="copy" onclick="copiar()">Copiar</button>
+    </div>
+    </section>
 
-</form>
+    </form>
 
-<script>
-let step=1;
+    </nav>
 
-// Opções fixas
-let problemasFixos=JSON.parse(localStorage.getItem("problemasFixos"))||[
-  "Falha de autenticação","Serviço parado","Erro de permissão","Falha de conexão"
-];
-let solucoesFixas=JSON.parse(localStorage.getItem("solucoesFixas"))||[
-  "Reinício do serviço","Ajuste de permissões","Correção de configuração","Atualização do sistema"
-];
+        <!--Rodape-->
+        
+        <footer id="footer">
+            &copy; Copyright 2026 B.I.T soluções em T.I
+        </footer>
 
-// Listas adicionadas
-let problemas=JSON.parse(localStorage.getItem("problemas"))||[];
-let solucoes=JSON.parse(localStorage.getItem("solucoes"))||[];
-
-// Navegação
-function mostrar(s){
-  document.querySelectorAll(".step").forEach(e=>e.style.display="none");
-  document.querySelector(`[data-step="${s}"]`).style.display="block";
-  step=s;
-}
-function nextStep(){mostrar(step+1)}
-function prevStep(){mostrar(step-1)}
-function toggleTema(){document.body.classList.toggle("dark")}
-
-// Render fixos
-function renderFixos(){
-  boxProblemas.innerHTML=problemasFixos.map((p,i)=>
-    `<label><input type="checkbox" value="${p}"> ${p} <small onclick="removerFixo('problemas',${i})">✖</small></label>`
-  ).join("");
-
-  boxSolucoes.innerHTML=solucoesFixas.map((s,i)=>
-    `<label><input type="checkbox" value="${s}"> ${s} <small onclick="removerFixo('solucoes',${i})">✖</small></label>`
-  ).join("");
-}
-
-// Adicionar checkboxes selecionados
-function addChecked(tipo){
-  document.querySelectorAll(`#box${cap(tipo)} input:checked`).forEach(c=>{
-    const arr=tipo==="problemas"?problemas:solucoes;
-    if(!arr.includes(c.value)) arr.push(c.value);
-    c.checked=false;
-  });
-  salvar();
-}
-
-// Adicionar personalizado
-function addCustom(tipo){
-  const input=tipo==="problemas"?novoProblema:novaSolucao;
-  if(!input.value.trim()) return;
-  const fixos=tipo==="problemas"?problemasFixos:solucoesFixas;
-  fixos.push(input.value.trim());
-  input.value="";
-  salvarFixos();
-}
-
-// Remover fixos
-function removerFixo(tipo,i){
-  (tipo==="problemas"?problemasFixos:solucoesFixas).splice(i,1);
-  salvarFixos();
-}
-
-// Render listas adicionadas
-function renderLista(tipo){
-  const arr=tipo==="problemas"?problemas:solucoes;
-  document.getElementById("lista"+cap(tipo)).innerHTML=
-    arr.map((e,i)=>`<li>${e} <span onclick="remover('${tipo}',${i})">✖</span></li>`).join("");
-}
-
-// Remover item adicionado
-function remover(tipo,i){
-  (tipo==="problemas"?problemas:solucoes).splice(i,1);
-  salvar();
-}
-
-// Salvar listas
-function salvar(){
-  localStorage.setItem("problemas",JSON.stringify(problemas));
-  localStorage.setItem("solucoes",JSON.stringify(solucoes));
-  renderLista("problemas");
-  renderLista("solucoes");
-}
-
-// Salvar fixos
-function salvarFixos(){
-  localStorage.setItem("problemasFixos",JSON.stringify(problemasFixos));
-  localStorage.setItem("solucoesFixas",JSON.stringify(solucoesFixas));
-  renderFixos();
-}
-
-// Validar STEP2 antes de avançar
-function validarStep2(){
-  if(problemas.length===0){ alert("Adicione pelo menos um PROBLEMA."); return; }
-  if(solucoes.length===0){ alert("Adicione pelo menos uma SOLUÇÃO."); return; }
-  nextStep();
-}
-
-// Gerar relatório
-function gerarRelatorio(){
-  const statusValue = document.getElementById("status").value;
-
-  if(!local.value || !wot.value || !responsavel.value || !funcao.value){
-    alert("Preencha todos os campos de identificação."); return;
-  }
-  if(problemas.length===0){ alert("Adicione pelo menos um PROBLEMA."); return; }
-  if(solucoes.length===0){ alert("Adicione pelo menos uma SOLUÇÃO."); return; }
-  if(!statusValue){ alert("Selecione o STATUS."); return; }
-
-  resultado.innerText = `DATA: ${new Date().toLocaleString("pt-BR")}
-
-LOCAL: ${local.value}
-WOT: ${wot.value}
-RESPONSÁVEL: ${responsavel.value}
-FUNÇÃO: ${funcao.value}
-STATUS: ${statusValue}
-
-PROBLEMAS IDENTIFICADOS:
-${problemas.map(p=>"- "+p).join("\n")}
-
-SOLUÇÕES APLICADAS:
-${solucoes.map(s=>"- "+s).join("\n")}`;
-}
-
-// Copiar
-function copiar(){navigator.clipboard.writeText(resultado.innerText); alert("Copiado!");}
-
-// Capitalizar tipo
-function cap(t){return t.charAt(0).toUpperCase()+t.slice(1)}
-
-// Inicializar
-renderFixos();
-renderLista("problemas");
-renderLista("solucoes");
-mostrar(1);
-</script>
+    </div>
 
 </body>
 </html>
