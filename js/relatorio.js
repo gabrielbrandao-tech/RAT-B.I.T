@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   const steps = document.querySelectorAll(".step");
   let currentStep = 0;
 
@@ -9,7 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 🔴 EXPOR FUNÇÕES GLOBALMENTE
+  /* =========================
+     NAVEGAÇÃO
+  ========================= */
+
   window.nextStep = function () {
     if (currentStep < steps.length - 1) {
       currentStep++;
@@ -24,25 +26,76 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  window.toggleTema = function () {
-    document.body.classList.toggle("dark");
-  };
-
-  window.addCustom = function () {};
-  window.addChecked = function () {};
   window.validarStep2 = function () {
     nextStep();
   };
 
+  /* =========================
+     TEMA
+  ========================= */
+
+  window.toggleTema = function () {
+    document.body.classList.toggle("dark");
+  };
+
+  /* =========================
+     ADICIONAR PROBLEMAS / SOLUÇÕES
+  ========================= */
+
+  window.addCustom = function (tipo) {
+    let input, lista;
+
+    if (tipo === "problemas") {
+      input = document.getElementById("novoProblema");
+      lista = document.getElementById("listaProblemas");
+    } else {
+      input = document.getElementById("novaSolucao");
+      lista = document.getElementById("listaSolucoes");
+    }
+
+    if (!input.value.trim()) return;
+
+    const li = document.createElement("li");
+    li.textContent = input.value;
+
+    lista.appendChild(li);
+    input.value = "";
+  };
+
+  window.addChecked = function (tipo) {
+    let box, lista;
+
+    if (tipo === "problemas") {
+      box = document.getElementById("boxProblemas");
+      lista = document.getElementById("listaProblemas");
+    } else {
+      box = document.getElementById("boxSolucoes");
+      lista = document.getElementById("listaSolucoes");
+    }
+
+    const checks = box.querySelectorAll("input[type=checkbox]:checked");
+
+    checks.forEach(check => {
+      const li = document.createElement("li");
+      li.textContent = check.value;
+      lista.appendChild(li);
+      check.checked = false;
+    });
+  };
+
+  /* =========================
+     RELATÓRIO FINAL
+  ========================= */
+
   window.gerarRelatorio = function () {
-    document.getElementById("resultado").textContent =
-      "Relatório gerado com sucesso.";
+    const resultado = document.getElementById("resultado");
+
+    resultado.textContent = "Relatório gerado com sucesso.";
   };
 
   window.copiar = function () {
-    navigator.clipboard.writeText(
-      document.getElementById("resultado").textContent
-    );
+    const texto = document.getElementById("resultado").textContent;
+    navigator.clipboard.writeText(texto);
   };
 
   showStep(currentStep);
