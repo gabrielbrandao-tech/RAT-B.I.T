@@ -26,10 +26,10 @@
     <h3>Identificação</h3>
 
     <div class="grid">
-      <div><label>Local *</label><input id="local"></div>
-      <div><label>WOT *</label><input id="wot"></div>
-      <div><label>Responsável *</label><input id="responsavel"></div>
-      <div><label>Função *</label><input id="funcao"></div>
+      <div><label>Local *</label><input></div>
+      <div><label>WOT *</label><input></div>
+      <div><label>Responsável *</label><input></div>
+      <div><label>Função *</label><input></div>
     </div>
 
     <div class="buttons">
@@ -41,11 +41,17 @@
   <section class="step" style="display:none;">
     <h3>Descrição Técnica</h3>
 
+    <!-- PROBLEMAS -->
     <h4>Problemas</h4>
+
     <div id="boxProblemas" class="box"></div>
 
+    <button type="button" class="next" onclick="addChecked('problemas')">
+      Adicionar selecionado
+    </button>
+
     <input id="novoProblema" placeholder="Adicionar novo problema">
-    <button class="next" type="button" onclick="addCustom('problemas')">
+    <button type="button" class="next" onclick="addCustom('problemas')">
       Adicionar problema
     </button>
 
@@ -53,11 +59,17 @@
 
     <hr>
 
+    <!-- SOLUÇÕES -->
     <h4>Soluções</h4>
+
     <div id="boxSolucoes" class="box"></div>
 
+    <button type="button" class="next" onclick="addChecked('solucoes')">
+      Adicionar selecionado
+    </button>
+
     <input id="novaSolucao" placeholder="Adicionar nova solução">
-    <button class="next" type="button" onclick="addCustom('solucoes')">
+    <button type="button" class="next" onclick="addCustom('solucoes')">
       Adicionar solução
     </button>
 
@@ -74,8 +86,7 @@
     <h3>Finalização</h3>
 
     <label>Status *</label>
-    <select id="status">
-      <option value="">Selecione</option>
+    <select>
       <option>Produtivo</option>
       <option>Improdutivo</option>
     </select>
@@ -94,14 +105,12 @@
 
 </form>
 
-<footer id="footer">
-  &copy; 2026 B.I.T soluções em T.I
+<footer>
+  © 2026 B.I.T soluções em T.I
 </footer>
 
-<!-- JS principal -->
-<script src="./js/relatorio.js?v=fix"></script>
+<script src="./js/relatorio.js"></script>
 
-<!-- Service Worker -->
 <script>
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./js/service-worker.js');

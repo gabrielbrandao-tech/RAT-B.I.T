@@ -1,28 +1,60 @@
-# NOTAS-B.I.T
+# Relatório Técnico – PWA
 
-Aplicação web simples para registro e cálculo de notas, desenvolvida com HTML, CSS e JavaScript.
+Aplicação Web Progressiva (PWA) desenvolvida para auxiliar técnicos de TI no registro rápido, padronizado e reutilizável de relatórios técnicos, com suporte a funcionamento offline.
 
-Projeto focado em aprendizado, organização de código e prática de responsividade.
+## Descrição
 
----
+O Relatório Técnico – PWA permite cadastrar e manter uma biblioteca local de problemas e soluções recorrentes, selecionar rapidamente os itens necessários para cada atendimento e gerar um relatório técnico em formato de texto, pronto para cópia e envio.
 
-## Tecnologias
+O projeto foi pensado para uso prático em campo, inclusive sem conexão com a internet.
 
-- HTML5  
-- CSS3  
-- JavaScript  
-- Git e GitHub  
+## Funcionalidades
 
----
+- Interface em etapas (wizard)
+- Cadastro de dados básicos do atendimento
+- Biblioteca persistente de problemas e soluções
+- Seleção de problemas e soluções para cada relatório
+- Adição e remoção de itens da biblioteca
+- Geração automática de relatório técnico em texto
+- Botão para copiar o relatório gerado
+- Tema claro e escuro
+- Funcionamento offline
+- Instalação como aplicativo (PWA)
 
-## Responsividade
+## Persistência de Dados
 
-O layout foi adaptado para desktop e dispositivos móveis utilizando media queries, garantindo melhor usabilidade em telas menores.
+Os dados de problemas e soluções são armazenados localmente utilizando `localStorage`, permitindo:
 
----
+- Reutilização em novos atendimentos
+- Inclusão e exclusão de itens a qualquer momento
+- Funcionamento completo mesmo sem internet
 
-## Como usar
+## Funcionamento Offline
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/BR4ND40/RAT-B.I.T.git
+A aplicação utiliza Service Worker para cache de arquivos essenciais, garantindo:
+
+- Acesso offline
+- Melhor desempenho
+- Comportamento semelhante a um aplicativo nativo
+
+## Tecnologias Utilizadas
+
+- HTML5
+- CSS3 (Responsivo)
+- JavaScript (Vanilla)
+- PWA (Manifest e Service Worker)
+- LocalStorage
+
+## Estrutura de Pastas
+
+```text
+/
+├── index.html
+├── manifest.json
+├── css/
+│   └── estilo.css
+├── js/
+│   ├── relatorio.js
+│   └── service-worker.js
+├── icon-192.png
+└── icon-512.png
